@@ -11,6 +11,8 @@
             --secondary: #ffccd5;
             --bg: #fff0f3;
             --text: #590d22;
+            --cake-color: #f7b7b7;
+            --cream-color: #fff;
         }
 
         body, html {
@@ -23,7 +25,6 @@
             scroll-behavior: smooth;
         }
 
-        /* หน้าปก: ซองจดหมายเซอร์ไพรส์ */
         #gatekeeper {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: var(--primary);
@@ -34,7 +35,6 @@
         .envelope-icon { font-size: 100px; cursor: pointer; animation: bounce 2s infinite; }
         .open-text { color: white; margin-top: 20px; font-weight: bold; border: 2px solid white; padding: 10px 25px; border-radius: 50px; cursor: pointer; animation: pulse 1.5s infinite; }
 
-        /* เนื้อหาหลัก */
         #main-content {
             opacity: 0; display: none;
             flex-direction: column; align-items: center;
@@ -45,49 +45,52 @@
         .header-title { font-family: 'Caveat', cursive; font-size: 3.5rem; color: var(--primary); margin: 20px 0 0; }
         .anniversary-date { font-size: 0.9rem; margin-bottom: 30px; opacity: 0.7; }
 
-        /* Polaroid Slideshow */
         .polaroid-container { display: flex; flex-direction: column; align-items: center; margin-bottom: 40px; }
         .polaroid {
-            width: 300px; background: white; padding: 12px 12px 45px 12px;
+            width: 280px; background: white; padding: 12px 12px 40px 12px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transform: rotate(-1deg); position: relative; border-radius: 2px;
+            transform: rotate(-2deg); position: relative; border-radius: 2px;
         }
-        .slide { 
-            width: 100%; 
-            height: 350px; 
-            object-fit: cover; 
-            display: none; 
-            border-radius: 2px; 
-        }
+        .slide { width: 100%; height: 300px; object-fit: cover; display: none; border-radius: 2px; }
         .slide.active { display: block; animation: fadeEffect 1s; }
         .polaroid-caption { font-family: 'Caveat', cursive; font-size: 1.8rem; color: var(--text); margin-top: 15px; }
 
-        /* Timer Section */
         .timer-section {
             width: 90%; max-width: 400px; background: white; border-radius: 25px;
             padding: 30px 15px; box-shadow: 0 10px 25px rgba(255, 77, 109, 0.1);
             margin-bottom: 40px; border: 2px solid var(--secondary);
         }
-        .timer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-        .timer-box { background: var(--bg); padding: 15px 5px; border-radius: 15px; border: 1px solid var(--secondary); }
-        .timer-val { font-size: 2.2rem; font-weight: bold; color: var(--primary); display: block; }
-        .timer-unit { font-size: 0.75rem; color: var(--text); }
+        .timer-title { font-weight: bold; color: var(--primary); font-size: 1.2rem; margin-bottom: 20px; }
+        .timer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+        .timer-box { background: var(--bg); padding: 15px; border-radius: 15px; border: 1px solid var(--secondary); }
+        .timer-val { font-size: 2.5rem; font-weight: bold; color: var(--primary); display: block; line-height: 1; }
+        .timer-unit { font-size: 0.8rem; font-weight: 300; color: var(--text); }
 
-        /* Letter Container */
+        .cake-container { margin: 40px 0; position: relative; }
+        .cake { position: relative; width: 150px; height: 100px; background: var(--cake-color); border-radius: 10px 10px 0 0; margin: 0 auto; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .cake::before { content: ''; position: absolute; top: -15px; left: 10px; width: 130px; height: 30px; background: var(--cream-color); border-radius: 50%; box-shadow: 0 5px 0 var(--cake-color); }
+        .candle { position: absolute; top: -50px; left: 50%; transform: translateX(-50%); width: 10px; height: 40px; background: #ffeb3b; border-radius: 5px; }
+        .flame { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); width: 15px; height: 20px; background: #ff9800; border-radius: 50% 50% 20% 20%; animation: flicker 0.5s infinite; }
+        .cake-text { font-family: 'Caveat', cursive; font-size: 1.5rem; color: #fff; position: absolute; top: 40px; left: 50%; transform: translateX(-50%); width: 100%; }
+
+        .doll-container { display: flex; justify-content: center; gap: 30px; margin: 30px 0; }
+        .doll { font-size: 70px; animation: dollWiggle 2s infinite ease-in-out; }
+
         .letter-container {
-            width: 85%; max-width: 450px; background: rgba(255, 255, 255, 0.9);
+            width: 85%; max-width: 450px; background: rgba(255, 255, 255, 0.8);
             padding: 25px; border-radius: 20px; border-left: 5px solid var(--primary);
-            text-align: left; line-height: 1.8; margin-bottom: 60px; min-height: 150px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: left; line-height: 1.9; margin-bottom: 60px; min-height: 150px;
         }
 
         @keyframes bounce { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
         @keyframes fadeEffect { from { opacity: 0.3; } to { opacity: 1; } }
+        @keyframes flicker { 0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.9; } 50% { transform: translateX(-50%) scale(1.1); opacity: 1; } }
+        @keyframes dollWiggle { 0%, 100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
         @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
         .falling-heart { position: fixed; top: -10%; z-index: -1; animation: fall linear forwards; }
     </style>
 </head>
-<body>
+<body onclick="createHeart(event)">
 
     <audio id="mySong" loop>
         <source src="yimgay.mp3" type="audio/mpeg">
@@ -100,7 +103,20 @@
 
     <div id="main-content">
         <h1 class="header-title">Happy Anniversary</h1>
-        <div class="anniversary-date">Together Since 15.07.2019 ❤️</div>
+        <div class="anniversary-date">Together Since 15.07.2562 ❤️</div>
+
+        <div class="doll-container">
+            <div class="doll">🐻</div>
+            <div class="doll">🐰</div>
+        </div>
+
+        <div class="cake-container">
+            <div class="cake">
+                <div class="candle"><div class="flame"></div></div>
+                <div class="cake-text">Name ❤️ Ploy</div>
+            </div>
+            <p style="margin-top: 15px; font-weight: bold; color: var(--primary);">รักอ้วนที่สุดเลย!</p>
+        </div>
 
         <div class="polaroid-container">
             <div class="polaroid">
@@ -118,16 +134,17 @@
                 <img class="slide" src="https://i.ibb.co/MxZKwyR2/LINE-ALBUM-6469-260410-1.jpg">
                 <img class="slide" src="https://i.ibb.co/Kjgky0bX/LINE-ALBUM-6469-260410-2.jpg">
             </div>
-            <div class="polaroid-caption">รักอ้วนที่สุดเลย! ❤️</div>
+            <div class="polaroid-caption">ขอบคุณความทรงจำดีๆ นะ ❤️</div>
         </div>
 
         <div class="timer-section">
+            <div class="timer-title">...เวลาที่เราจับมือกัน...</div>
             <div class="timer-grid">
                 <div class="timer-box"><span id="years" class="timer-val">0</span><span class="timer-unit">ปี</span></div>
                 <div class="timer-box"><span id="months" class="timer-val">0</span><span class="timer-unit">เดือน</span></div>
                 <div class="timer-box"><span id="days" class="timer-val">0</span><span class="timer-unit">วัน</span></div>
             </div>
-            <div id="live-clock" style="margin-top:10px; opacity:0.6;"></div>
+            <div id="live-clock" style="margin-top: 15px; opacity: 0.6;"></div>
         </div>
 
         <div class="letter-container" id="typewriter"></div>
@@ -162,7 +179,7 @@
             document.getElementById('years').innerText = years;
             document.getElementById('months').innerText = months;
             document.getElementById('days').innerText = days;
-            
+
             const diff = now - startDate;
             const h = Math.floor((diff / 3600000) % 24);
             const m = Math.floor((diff / 60000) % 60);
@@ -188,6 +205,17 @@
             }
         }
 
+        function createHeart(e) {
+            const heart = document.createElement('div');
+            heart.style.position = 'absolute';
+            heart.style.pointerEvents = 'none';
+            heart.innerHTML = '❤️';
+            heart.style.left = e.pageX + 'px';
+            heart.style.top = e.pageY + 'px';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 800);
+        }
+
         setInterval(() => {
             const h = document.createElement('div');
             h.classList.add('falling-heart');
@@ -196,8 +224,7 @@
             h.style.animationDuration = (Math.random() * 3 + 2) + 's';
             document.body.appendChild(h);
             setTimeout(() => h.remove(), 5000);
-        }, 500);
+        }, 450);
     </script>
 </body>
-</html>
 </html>
