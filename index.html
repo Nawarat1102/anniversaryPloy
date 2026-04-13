@@ -48,14 +48,20 @@
         .header-title { font-family: 'Caveat', cursive; font-size: 3.5rem; color: var(--primary); margin: 20px 0 0; }
         .anniversary-date { font-size: 0.9rem; margin-bottom: 30px; opacity: 0.7; }
 
-        /* สไลด์โชว์รูปแบบ Polaroid */
+        /* สไลด์โชว์รูปแบบ Polaroid - ปรับปรุงให้รูปเต็มเฟรม */
         .polaroid-container { display: flex; flex-direction: column; align-items: center; margin-bottom: 40px; }
         .polaroid {
-            width: 280px; background: white; padding: 12px 12px 40px 12px;
+            width: 300px; background: white; padding: 12px 12px 45px 12px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transform: rotate(-2deg); position: relative; border-radius: 2px;
+            transform: rotate(-1deg); position: relative; border-radius: 2px;
         }
-        .slide { width: 100%; height: 300px; object-fit: cover; display: none; border-radius: 2px; }
+        .slide { 
+            width: 100%; 
+            height: 350px; 
+            object-fit: cover; /* ทำให้รูปเต็มกรอบและไม่เบี้ยว */
+            display: none; 
+            border-radius: 2px; 
+        }
         .slide.active { display: block; animation: fadeEffect 1s; }
         .polaroid-caption { font-family: 'Caveat', cursive; font-size: 1.8rem; color: var(--text); margin-top: 15px; }
 
@@ -66,46 +72,30 @@
             margin-bottom: 40px; border: 2px solid var(--secondary);
         }
         .timer-title { font-weight: bold; color: var(--primary); font-size: 1.2rem; margin-bottom: 20px; }
-        .timer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
-        .timer-box { background: var(--bg); padding: 15px; border-radius: 15px; border: 1px solid var(--secondary); }
-        .timer-val { font-size: 2.5rem; font-weight: bold; color: var(--primary); display: block; line-height: 1; }
-        .timer-unit { font-size: 0.8rem; font-weight: 300; color: var(--text); }
+        .timer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+        .timer-box { background: var(--bg); padding: 15px 5px; border-radius: 15px; border: 1px solid var(--secondary); }
+        .timer-val { font-size: 2.2rem; font-weight: bold; color: var(--primary); display: block; line-height: 1; }
+        .timer-unit { font-size: 0.75rem; font-weight: 300; color: var(--text); }
         .live-clock { font-size: 0.9rem; margin-top: 15px; opacity: 0.6; }
-
-        /* ลูกเล่น: เค้กวันครบรอบ */
-        .cake-container { margin: 40px 0; position: relative; }
-        .cake { position: relative; width: 150px; height: 100px; background: var(--cake-color); border-radius: 10px 10px 0 0; margin: 0 auto; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        .cake::before { content: ''; position: absolute; top: -15px; left: 10px; width: 130px; height: 30px; background: var(--cream-color); border-radius: 50%; box-shadow: 0 5px 0 var(--cake-color); }
-        .candle { position: absolute; top: -50px; left: 50%; transform: translateX(-50%); width: 10px; height: 40px; background: #ffeb3b; border-radius: 5px; }
-        .flame { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); width: 15px; height: 20px; background: #ff9800; border-radius: 50% 50% 20% 20%; animation: flicker 0.5s infinite; box-shadow: 0 0 10px #ffeb3b; }
-        .cake-text { font-family: 'Caveat', cursive; font-size: 1.5rem; color: #fff; position: absolute; top: 40px; left: 50%; transform: translateX(-50%); width: 100%; }
-
-        /* ตุ๊กตาขยับได้ */
-        .doll-container { display: flex; justify-content: center; gap: 30px; margin: 30px 0; }
-        .doll { font-size: 70px; animation: dollWiggle 2s infinite ease-in-out; }
-        .doll:nth-child(2) { animation-delay: 0.5s; }
 
         /* จดหมายรัก */
         .letter-container {
-            width: 85%; max-width: 450px; background: rgba(255, 255, 255, 0.8);
+            width: 85%; max-width: 450px; background: rgba(255, 255, 255, 0.9);
             padding: 25px; border-radius: 20px; border-left: 5px solid var(--primary);
-            text-align: left; line-height: 1.9; margin-bottom: 60px; min-height: 150px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            text-align: left; line-height: 1.8; margin-bottom: 60px; min-height: 150px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            font-size: 1.05rem;
         }
 
         /* แอนิเมชั่น */
         @keyframes bounce { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
         @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(255,255,255,0.7); } 70% { box-shadow: 0 0 0 10px rgba(255,255,255,0); } 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); } }
         @keyframes fadeEffect { from { opacity: 0.3; } to { opacity: 1; } }
-        @keyframes flicker { 0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.9; } 50% { transform: translateX(-50%) scale(1.1); opacity: 1; } }
-        @keyframes dollWiggle { 0%, 100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
-        @keyframes heartPop { 0% { transform: scale(0); opacity: 1; } 100% { transform: scale(2) translateY(-100px); opacity: 0; } }
-        @keyframes firework { 0% { transform: translate(-50%, 60vh); width: 5px; height: 5px; opacity: 1; } 100% { transform: translate(-50%, 0); width: 150px; height: 150px; opacity: 0; } }
         @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
+        @keyframes heartPop { 0% { transform: scale(0); opacity: 1; } 100% { transform: scale(2) translateY(-100px); opacity: 0; } }
 
         .touch-heart { position: absolute; pointer-events: none; animation: heartPop 0.8s forwards; font-size: 30px; z-index: 1000; }
         .falling-heart { position: fixed; top: -10%; z-index: -1; animation: fall linear forwards; }
-        .firework-particle { position: fixed; bottom: 0; left: 50%; background: var(--primary); border-radius: 50%; animation: firework 2s ease-out forwards; z-index: -1; opacity: 0; }
     </style>
 </head>
 <body onclick="createHeart(event)">
@@ -123,36 +113,17 @@
         <h1 class="header-title">Happy Anniversary</h1>
         <div class="anniversary-date">Together Since 15.07.2562 ❤️</div>
 
-        <div class="doll-container">
-            <div class="doll">🐻</div>
-            <div class="doll">🐰</div>
-        </div>
-
-        <div class="cake-container">
-            <div class="cake">
-                <div class="candle"><div class="flame"></div></div>
-                <div class="cake-text">Name ❤️ Ploy</div>
-            </div>
-            <p style="margin-top: 15px; font-weight: bold; color: var(--primary);">รักอ้วนที่สุดเลย!</p>
-        </div>
-
         <div class="polaroid-container">
             <div class="polaroid">
-                <img class="slide active" src="https://i.ibb.co/ZRT68CQt/LINE-ALBUM-1369-260410-1.jpg">
-                <img class="slide" src="https://i.ibb.co/zTd30bVX/LINE-ALBUM-1369-260410-2.jpg">
-                <img class="slide" src="https://i.ibb.co/W4BQvHyz/LINE-ALBUM-1369-260410-3.jpg">
-                <img class="slide" src="https://i.ibb.co/p6SnXJrk/LINE-ALBUM-1369-260410-4.jpg">
-                <img class="slide" src="https://i.ibb.co/TMmLgrpn/LINE-ALBUM-1369-260410-5.jpg">
-                <img class="slide" src="https://i.ibb.co/k6VBvv6x/LINE-ALBUM-1369-260410-6.jpg">
-                <img class="slide" src="https://i.ibb.co/cSvSF90W/LINE-ALBUM-1369-260410-7.jpg">
-                <img class="slide" src="https://i.ibb.co/MxZKwyR2/LINE-ALBUM-6469-260410-1.jpg">
-                <img class="slide" src="https://i.ibb.co/Kjgky0bX/LINE-ALBUM-6469-260410-2.jpg">
                 <img class="slide active" src="https://i.ibb.co/ZpW8CFF1/58.jpg">
                 <img class="slide" src="https://i.ibb.co/Tj440G7/57.jpg">
                 <img class="slide" src="https://i.ibb.co/LhkPxRb0/56.jpg">
                 <img class="slide" src="https://i.ibb.co/dJQZk8Cn/55.jpg">
+                <img class="slide" src="https://i.ibb.co/ZRT68CQt/LINE-ALBUM-1369-260410-1.jpg">
+                <img class="slide" src="https://i.ibb.co/zTd30bVX/LINE-ALBUM-1369-260410-2.jpg">
+                <img class="slide" src="https://i.ibb.co/MxZKwyR2/LINE-ALBUM-6469-260410-1.jpg">
             </div>
-            <div class="polaroid-caption">ขอบคุณความทรงจำดีๆ นะ</div>
+            <div class="polaroid-caption">รักอ้วนที่สุดเลย! ❤️</div>
         </div>
 
         <div class="timer-section">
@@ -171,6 +142,7 @@
     </div>
 
     <script>
+        // ข้อความซึ้งๆ ที่คุณเรียบเรียง
         const messageText = "❤️ Happy Anniversary 6 ปี 9 เดือนนะอ้วน... ขอบคุณที่ร่วมเดินทางและอยู่เคียงข้างกันมานานขนาดนี้นะ ขอบคุณที่คอยให้อภัยเค้าเสมอมา ไม่ว่าเค้าจะทำผิดแค่ไหน จะเรื่องเล็กหรือเรื่องใหญ่ เธอก็พร้อมจะเข้าใจและไม่เคยทิ้งเค้าไปไหนเลย ในวันที่เค้าล้มลง หรือในวันที่เค้าเจ็บป่วย เธอก็เป็นคนที่อยู่ตรงนั้นคอยดูแลเค้าอย่างดีที่สุดเสมอ ขอบคุณที่ซัพพอร์ตเค้าในทุกๆ เรื่อง แม้ในวันที่เค้าลำบาก เธอก็คอยยื่นมือมาช่วย คอยดูแลเรื่องปากท้อง พาเค้าไปเที่ยวให้มีความสุข และทำให้เค้าไม่ต้องรู้สึกโดดเดี่ยวเลย เค้าอาจจะเป็นคนที่แสดงออกไม่เก่ง พูดไม่ค่อยหวาน แต่เค้าอยากให้รู้ไว้ว่าเธอคือคนสำคัญที่สุดในชีวิต และเป็นคนแรกที่เค้าอยากมอบความรักและทุกสิ่งทุกอย่างที่เค้ามีให้ทั้งหมด เค้าสัญญาว่าจะทำทุกอย่างให้เธอมีความสุขที่สุด จะทำทุกอย่างให้โดยที่เธอไม่ต้องร้องขอเลยนะ เค้าจะอยู่ข้างๆ เธอแบบนี้ตลอดไปนะอ้วน รักที่สุดเลยนะ!";
 
         const startDate = new Date('2019-07-15T00:00:00');
@@ -180,7 +152,6 @@
             song.play().catch(e => console.log("Audio block: " + e));
 
             document.getElementById('gatekeeper').style.opacity = '0';
-            launchFireworks(); 
             setTimeout(() => {
                 document.getElementById('gatekeeper').style.display = 'none';
                 document.getElementById('main-content').style.display = 'flex';
@@ -220,6 +191,7 @@
         setInterval(updateDetailedCounter, 1000);
         updateDetailedCounter();
 
+        // สไลด์โชว์เปลี่ยนทุก 3 วินาที
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
         setInterval(() => {
@@ -228,12 +200,13 @@
             slides[currentSlide].classList.add('active');
         }, 3000);
 
+        // เอฟเฟกต์พิมพ์ตัวอักษร
         let charIndex = 0;
         function startTypewriter() {
             if (charIndex < messageText.length) {
                 document.getElementById("typewriter").innerHTML += messageText.charAt(charIndex);
                 charIndex++;
-                setTimeout(startTypewriter, 80);
+                setTimeout(startTypewriter, 70);
             }
         }
 
@@ -247,6 +220,7 @@
             setTimeout(() => heart.remove(), 800);
         }
 
+        // หัวใจร่วงหล่น
         setInterval(() => {
             const h = document.createElement('div');
             h.classList.add('falling-heart');
@@ -257,20 +231,7 @@
             h.style.opacity = Math.random();
             document.body.appendChild(h);
             setTimeout(() => h.remove(), 5000);
-        }, 400);
-
-        function launchFireworks() {
-            for(let i=0; i<5; i++) {
-                setTimeout(() => {
-                    const fw = document.createElement('div');
-                    fw.classList.add('firework-particle');
-                    fw.style.left = (Math.random() * 80 + 10) + 'vw';
-                    fw.style.backgroundColor = ['#ff4d6d', '#ffeb3b', '#fff'][Math.floor(Math.random()*3)];
-                    document.body.appendChild(fw);
-                    setTimeout(() => fw.remove(), 2000);
-                }, i * 300);
-            }
-        }
+        }, 450);
     </script>
 </body>
 </html>
